@@ -6,6 +6,7 @@ def call(Map config=[:], Closure body) {
             booleanParam(name: "RunningNonStop", defaulValue: true, description: "Running 24 x 7")
             string(name: "not_used", defaultValue: "TBD", description: "will decide later")
     }
+    properties([parameters([choice(choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'], description: 'test choice', name: 'EC2_start_time'), booleanParam(defaultValue: true, description: 'test boolean', name: 'RunningNonStop'), string(defaultValue: 'TBD', description: 'not sure', name: 'not_used', trim: false)])])
     node {
         
         stage("display values") {
