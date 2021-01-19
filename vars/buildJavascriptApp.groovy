@@ -15,6 +15,9 @@ def call(Map config=[:], Closure body) {
             input_parameters_ansible.add(params.EC2_end_time)
             input_parameters_ansible.add(choice(choices: [' ','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'], description: 'test choice', name: 'EC2_start_time'))
             echo "size after: ${input_parameters_ansible.size()}"
+            echo "value of 0 after: ${input_parameters_ansible[0]}"
+            echo "value of 1 after: ${input_parameters_ansible[1]}"
+            echo "value of 2 after: ${input_parameters_ansible[2]}"
         }
         git url: "https://github.com/werne2j/sample-nodejs"
         stage("Install") {
