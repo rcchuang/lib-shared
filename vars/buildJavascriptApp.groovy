@@ -10,7 +10,7 @@ def call(Map config=[:], Closure body) {
             echo "choice start time: ${params.EC2_start_time}"
             echo "choice end time: ${params.EC2_end_time}"
             env.START_TIME = "${params.EC2_start_time}"
-            env.END_TIME = "${params.EC2_start_time}"
+            env.END_TIME = "${params.EC2_end_time}"
             input_parameters_ansible=[]
             echo "size before: ${input_parameters_ansible.size()}"
             input_parameters_ansible.add(params.EC2_start_time)
