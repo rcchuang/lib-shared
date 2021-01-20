@@ -7,8 +7,10 @@ def call(Map config=[:], Closure body) {
     node {
         
         stage("display values") {
-            echo "choice: ${params.EC2_start_time}"
-            echo "boolean: ${params.EC2_start_time}"
+            echo "choice start time: ${params.EC2_start_time}"
+            echo "choice end time: ${params.EC2_end_time}"
+            env.START_TIME = "${params.EC2_start_time}"
+            env.END_TIME = "${params.EC2_start_time}"
             input_parameters_ansible=[]
             echo "size before: ${input_parameters_ansible.size()}"
             input_parameters_ansible.add(params.EC2_start_time)
@@ -18,6 +20,12 @@ def call(Map config=[:], Closure body) {
             echo "value of 0 after: ${input_parameters_ansible[0]}"
             echo "value of 1 after: ${input_parameters_ansible[1]}"
             echo "value of 2 after: ${input_parameters_ansible[2]}"
+            extra_vars = [:]
+            if (env.START_TIME != " " && env.END_TIME != " " && env.START_TIME != env.END_TIME) {}
+                extra_vars.put("start_time", env.START_TIME)
+                extra_vars.put("end_time", env.END_TIME)
+            }
+            echo "map size after: ${extra_vars.size()}"
         }
         git url: "https://github.com/werne2j/sample-nodejs"
         stage("Install") {
