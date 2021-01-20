@@ -21,6 +21,9 @@ def call(Map config=[:], Closure body) {
             echo "value of 1 after: ${input_parameters_ansible[1]}"
             echo "value of 2 after: ${input_parameters_ansible[2]}"
             extra_vars = [:]
+            echo "env start time: ${env.START_TIME}"
+            echo "env end time: ${env.END_TIME}"
+            
             if (env.START_TIME != " " && env.END_TIME != " " && env.START_TIME != env.END_TIME) {
                 extra_vars.put("start_time", env.START_TIME)
                 extra_vars.put("end_time", env.END_TIME)
